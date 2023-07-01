@@ -11,16 +11,17 @@ import {
 } from "@phosphor-icons/react";
 
 import "./sidebar.css";
+import { NavLink } from "react-router-dom";
 
 const menuItems = [
-  { opt: "active", Icon: House, value: "Home" },
-  { opt: "", Icon: Hash, value: "Explore" },
-  { opt: "", Icon: Bell, value: "Notification" },
-  { opt: "", Icon: Envelope, value: "Messages" },
-  { opt: "", Icon: BookmarkSimple, value: "Bookmarks" },
-  { opt: "", Icon: FileText, value: "Lista" },
-  { opt: "", Icon: User, value: "Profile" },
-  { opt: "", Icon: DotsThreeCircle, value: "More" },
+  { to: "/", Icon: House, value: "Home" },
+  { to: "/explore", Icon: Hash, value: "Explore" },
+  { to: "/notification", Icon: Bell, value: "Notification" },
+  { to: "/messages", Icon: Envelope, value: "Messages" },
+  { to: "/bookmarks", Icon: BookmarkSimple, value: "Bookmarks" },
+  { to: "/lista", Icon: FileText, value: "Lista" },
+  { to: "/profile", Icon: User, value: "Profile" },
+  { to: "/more", Icon: DotsThreeCircle, value: "More" },
 ];
 export function SideBar() {
   return (
@@ -28,10 +29,10 @@ export function SideBar() {
       <img className="logo" src={twitterLogo} alt="logo" />
 
       <nav className="main-navigation">
-        {menuItems.map(({ value, Icon, opt }) => (
-          <a key={value} className={opt} href="#">
-            <Icon weight={opt === "active" ? "fill" : "thin"} /> {value}
-          </a>
+        {menuItems.map(({ value, Icon, to }) => (
+          <NavLink key={value} to={to}>
+            <Icon weight={"fill"} /> {value}
+          </NavLink>
         ))}
       </nav>
 
