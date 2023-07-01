@@ -7,8 +7,21 @@ import {
   FileText,
   Hash,
   House,
+  Sparkle,
   User,
 } from "@phosphor-icons/react";
+import Tweet from "./components/Tweet";
+
+const menuItems = [
+  { opt: "active", Icon: House, value: "Home" },
+  { opt: "", Icon: Hash, value: "Explore" },
+  { opt: "", Icon: Bell, value: "Notification" },
+  { opt: "", Icon: Envelope, value: "Messages" },
+  { opt: "", Icon: BookmarkSimple, value: "Bookmarks" },
+  { opt: "", Icon: FileText, value: "Lista" },
+  { opt: "", Icon: User, value: "Profile" },
+  { opt: "", Icon: DotsThreeCircle, value: "More" },
+];
 
 function App() {
   return (
@@ -17,30 +30,11 @@ function App() {
         <img className="logo" src={twitterLogo} alt="logo" />
 
         <nav className="main-navigation">
-          <a className="active" href="#">
-            <House /> Home
-          </a>
-          <a href="#">
-            <Hash /> Explore
-          </a>
-          <a href="#">
-            <Bell /> Notification
-          </a>
-          <a href="#">
-            <Envelope /> Messages
-          </a>
-          <a href="#">
-            <BookmarkSimple /> Bookmarks
-          </a>
-          <a href="#">
-            <FileText /> Lista
-          </a>
-          <a href="#">
-            <User /> Profile
-          </a>
-          <a href="#">
-            <DotsThreeCircle /> More
-          </a>
+          {menuItems.map(({ value, Icon, opt }) => (
+            <a key={value} className={opt} href="#">
+              <Icon weight={opt === "active" ? "fill" : "thin"} /> {value}
+            </a>
+          ))}
         </nav>
 
         <button className="new-tweet" type="button">
@@ -48,7 +42,29 @@ function App() {
         </button>
       </aside>
 
-      <div className="content"></div>
+      <div className="content">
+        <main className="timeline">
+          <div className="timeline-header">
+            Home <Sparkle />
+          </div>
+
+          <form className="new-tweet-form">
+            <label htmlFor="tweet">
+              <img src="https://github.com/eduardopanzo.png" alt="João Panzo" />
+              <textarea id="tweet" placeholder="What's happening?" />
+            </label>
+
+            <button type="submit">Tweet</button>
+          </form>
+
+          <div className="separator"></div>
+
+          <Tweet />
+          <Tweet />
+          <Tweet />
+          <Tweet />
+        </main>
+      </div>
     </div>
   );
 }
