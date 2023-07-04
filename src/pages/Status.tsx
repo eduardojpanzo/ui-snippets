@@ -4,6 +4,7 @@ import { Separator } from "../components/Separator";
 import { Tweet } from "../components/Tweet";
 
 import "./status.css";
+import { PaperPlaneRight } from "@phosphor-icons/react";
 
 const initial = [
   "Concordo...",
@@ -48,7 +49,10 @@ export default function Status() {
           />
         </label>
 
-        <button type="submit">Answer</button>
+        <button type="submit">
+          <PaperPlaneRight />
+          <span>Answer</span>
+        </button>
       </form>
 
       {answers.map((answer) => (

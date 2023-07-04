@@ -7,6 +7,7 @@ import {
   FileText,
   Hash,
   House,
+  Pencil,
   User,
 } from "@phosphor-icons/react";
 
@@ -31,13 +32,14 @@ export function SideBar() {
       <nav className="main-navigation">
         {menuItems.map(({ value, Icon, to }) => (
           <NavLink key={value} to={to}>
-            <Icon weight={"fill"} /> {value}
+            <Icon weight={"fill"} /> <span>{value}</span>
           </NavLink>
         ))}
       </nav>
 
       <button className="new-tweet" type="button">
-        Tweet
+        <Pencil />
+        <span>Tweet</span>
       </button>
     </aside>
   );
